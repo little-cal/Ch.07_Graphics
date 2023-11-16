@@ -14,7 +14,110 @@ Then add a comment at the top telling the reader what you are drawing.
 IN THE WINDOW TITLE PLEASE PUT YOUR NAME.
 When you are finished Pull Request your file to your instructor.
 '''
+import arcade
+import random
+SH = 500
+SW = 500
+arcade.open_window(SW, SH, "Caleb Little")
+arcade.set_background_color(arcade.color.WHITE)
+arcade.start_render()
+# making a randomized background
+for j in range(SH):
+    for i in range(3):
+        x = random.randint(0, SW)
+        y = random.randint(0, SH)
+        r = random.randint(15, 30)
+        arcade.draw_circle_filled(x, y, r, arcade.color.PURPLE_HEART)
+    for i in range(3):
+        x = random.randint(0, SW)
+        y = random.randint(0, SH)
+        r = random.randint(15, 30)
+        arcade.draw_circle_filled(x, y, r, arcade.color.PURPLE_MOUNTAIN_MAJESTY)
+    for i in range(3):
+        x = random.randint(0, SW)
+        y = random.randint(0, SH)
+        r = random.randint(15, 30)
+        arcade.draw_circle_filled(x, y, r, arcade.color.PURPLE_NAVY)
 
+# start of the drawing itself
+# popsicle
+pop_side = [(150, 175), (130, 200), (130, 410), (150, 398)]
 
+triangle_in_arc = [(250, 450), (150, 400), (350, 400)]
 
+filled_arc = [(130, 410), (150, 400), (250, 450)]
 
+arcade.draw_polygon_filled(triangle_in_arc, (167, 107, 207, 150))
+arcade.draw_polygon_filled(filled_arc, (167, 107, 207, 200))
+arcade.draw_polygon_filled(pop_side, (167, 107, 207, 200))
+
+arcade.draw_lrtb_rectangle_filled(150, SW-150, 400, 175, (167, 107, 207, 200))
+arcade.draw_lrtb_rectangle_outline(150, SW-150, 400, 175, arcade.color.BLACK, 2)
+
+arcade.draw_arc_filled(230, 410, 200, 100, (167, 107, 207, 200), 0, 180)
+arcade.draw_arc_outline(230, 410, 200, 100, arcade.color.BLACK, 0, 180, 3)
+arcade.draw_circle_filled(320, 415, 15, (167, 107, 207, 200))
+
+arcade.draw_arc_filled(250, 398, 200, 100, (167, 107, 207, 200), 0, 180)
+arcade.draw_arc_outline(250, 398, 200, 100, arcade.color.BLACK, 0, 180, 3)
+
+# outlines for polygons
+arcade.draw_line(150, 175, 130, 200, arcade.color.BLACK, 2)
+arcade.draw_line(130, 200, 130, 410, arcade.color.BLACK, 2)
+arcade.draw_line(130, 410, 150, 398, arcade.color.BLACK, 2)
+arcade.draw_line(150, 400, SW-150, 400, (167, 107, 207, 130))
+
+# stick
+arcade.draw_lrtb_rectangle_filled(225, 275, 175, 50, (166, 123, 91))
+arcade.draw_lrtb_rectangle_outline(225, 275, 175, 50, arcade.color.BLACK, 2)
+
+arcade.draw_arc_filled(250, 50, 50, 40, (166, 123, 91), -180, 0)
+arcade.draw_arc_outline(250, 50, 50, 40, arcade.color.BLACK, -180, 0, 3)
+
+arcade.draw_line(226, 50, 274, 50, (166, 123, 91), 2)
+
+arcade.draw_rectangle_filled(265, 100, 8, 75, (192, 153, 153, 200))
+arcade.draw_arc_filled(265, 137.5, 8, 8, (192, 153, 153, 200), 0, 180)
+arcade.draw_arc_filled(265, 62.5, 8, 8, (192, 153, 153, 200), 0, 180, 180)
+arcade.draw_circle_filled(265, 50, 4, (192, 153, 153, 200), 100)
+
+# scene inside the popsicle
+
+# moon
+arcade.draw_circle_filled(290, 390, 35, (255, 204, 51, 215))
+arcade.draw_circle_outline(290, 390, 35, arcade.color.BLACK)
+arcade.draw_circle_filled(275, 395, 20, (167, 107, 207, 235))
+arcade.draw_circle_outline(275, 395, 20, arcade.color.BLACK)
+
+# land
+arcade.draw_parabola_filled(151, 160, 349, 60, (10, 186, 181, 175))
+arcade.draw_parabola_outline(150, 160, 350, 60, arcade.color.BLACK, 2)
+arcade.draw_rectangle_filled(250, 198, 198, 45, (10, 186, 181, 175))
+
+# cloud
+
+for i in range(16):
+    x = random.randint(220, 275)
+    y = random.randint(335, 350)
+    arcade.draw_circle_filled(x, y, 20, arcade.color.PERIWINKLE)
+
+# stars
+for i in range(250):
+    x = random.randint(140, 350)
+    y = random.randint(175, 430)
+    font_size = random.randint(3, 9)
+    arcade.draw_text("*", x, y, arcade.color.ANTI_FLASH_WHITE, font_size)
+
+# glare/reflection
+arcade.draw_rectangle_filled(330, 300, 15, 160, (240, 255, 255, 200))
+arcade.draw_arc_filled(330, 380, 15, 15, (240, 255, 255, 200), 0, 180)
+arcade.draw_arc_filled(330, 220, 15, 15, (240, 255, 255, 200), 0, 180, 180)
+arcade.draw_circle_filled(330, 200, 7.5, (240, 255, 255, 200))
+
+arcade.draw_rectangle_filled(165, 230, 7.5, 80, (240, 255, 255, 200))
+arcade.draw_arc_filled(165, 270, 7.5, 7.5, (240, 255, 255, 200), 0, 180)
+arcade.draw_arc_filled(165, 190, 7.5, 7.5, (240, 255, 255, 200), 0, 180, 180)
+arcade.draw_circle_filled(165, 285, 7.5/2, (240, 255, 255, 200), 0, 40)
+
+arcade.finish_render()
+arcade.run()
