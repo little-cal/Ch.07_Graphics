@@ -19,28 +19,38 @@ import random
 SH = 500
 SW = 500
 arcade.open_window(SW, SH, "Caleb Little")
-arcade.set_background_color(arcade.color.WHITE)
+arcade.set_background_color(arcade.color.UBE)
 arcade.start_render()
 # making a randomized background
-for j in range(SH):
-    for i in range(3):
+transparency = 255
+for j in range(transparency):
+    for i in range(8):
         x = random.randint(0, SW)
         y = random.randint(0, SH)
         r = random.randint(15, 30)
-        arcade.draw_circle_filled(x, y, r, arcade.color.PURPLE_HEART)
-    for i in range(3):
+        arcade.draw_circle_filled(x, y, r, (105, 53, 156, transparency))
+    transparency -= 1
+    for i in range(8):
         x = random.randint(0, SW)
         y = random.randint(0, SH)
         r = random.randint(15, 30)
-        arcade.draw_circle_filled(x, y, r, arcade.color.PURPLE_MOUNTAIN_MAJESTY)
-    for i in range(3):
+        arcade.draw_circle_filled(x, y, r, (150, 120, 182, transparency))
+    transparency -= 1
+    for i in range(8):
         x = random.randint(0, SW)
         y = random.randint(0, SH)
         r = random.randint(15, 30)
-        arcade.draw_circle_filled(x, y, r, arcade.color.PURPLE_NAVY)
+        arcade.draw_circle_filled(x, y, r, (78, 81, 128, transparency))
+    transparency -= 1
+# border around the entire picture
+arcade.draw_rectangle_outline(250, 250, SW, SH, arcade.color.UBE, 16)
+arcade.draw_rectangle_outline(250, 250, SW-7.5, SH-7.5, arcade.color.WHITE, 2)
 
 # start of the drawing itself
+
 # popsicle
+
+# point lists for polygons
 pop_side = [(150, 175), (130, 200), (130, 410), (150, 398)]
 
 triangle_in_arc = [(250, 450), (150, 400), (350, 400)]
@@ -86,7 +96,7 @@ arcade.draw_circle_filled(265, 50, 4, (192, 153, 153, 200), 100)
 # moon
 arcade.draw_circle_filled(290, 390, 35, (255, 204, 51, 215))
 arcade.draw_circle_outline(290, 390, 35, arcade.color.BLACK)
-arcade.draw_circle_filled(275, 395, 20, (167, 107, 207, 235))
+arcade.draw_circle_filled(275, 395, 20, (167, 107, 207, 200))
 arcade.draw_circle_outline(275, 395, 20, arcade.color.BLACK)
 
 # land
@@ -96,19 +106,29 @@ arcade.draw_rectangle_filled(250, 198, 198, 45, (10, 186, 181, 175))
 
 # cloud
 
-for i in range(16):
-    x = random.randint(220, 275)
-    y = random.randint(335, 350)
+for i in range(18):
+    x = random.randint(210, 285)
+    y = random.randint(340, 350)
     arcade.draw_circle_filled(x, y, 20, arcade.color.PERIWINKLE)
+
+# rain drops
+arcade.draw_circle_filled(250, 280, 6, (65, 125, 193, 175))
+arcade.draw_arc_filled(250, 280, 12, 40, (65, 125, 193, 175), 0, 180)
+
+arcade.draw_circle_filled(220, 290, 6, (65, 125, 193, 150))
+arcade.draw_arc_filled(220, 290, 12, 40, (65, 125, 193, 175), 0, 180)
+
+arcade.draw_circle_filled(280, 290, 6, (65, 125, 193, 175))
+arcade.draw_arc_filled(280, 290, 12, 40, (65, 125, 193, 175), 0, 180)
 
 # stars
 for i in range(250):
-    x = random.randint(140, 350)
-    y = random.randint(175, 430)
-    font_size = random.randint(3, 9)
+    x = random.randint(150, 340)
+    y = random.randint(175, 420)
+    font_size = random.randint(4, 10)
     arcade.draw_text("*", x, y, arcade.color.ANTI_FLASH_WHITE, font_size)
 
-# glare/reflection
+# glare/reflections
 arcade.draw_rectangle_filled(330, 300, 15, 160, (240, 255, 255, 200))
 arcade.draw_arc_filled(330, 380, 15, 15, (240, 255, 255, 200), 0, 180)
 arcade.draw_arc_filled(330, 220, 15, 15, (240, 255, 255, 200), 0, 180, 180)
